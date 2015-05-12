@@ -41,6 +41,9 @@ def rename_columns(tbl, mapping = {'name':'Names', 'id':'IDs',
                 tbl.rename_column(k,v)
 
 def fix_bad_types(tbl):
+    """
+    For all columns that *can* be converted to float, convert them to float
+    """
     columns = []
     for columnname, column in tbl.columns.items():
         try:
@@ -83,6 +86,12 @@ def add_name_column(tbl, name):
     Add the person's name as a column
     """
     tbl.add_column(table.Column(name='Names', data=[name]*len(tbl)), index=0)
+
+def add_filename_column(tbl, filename):
+    """
+    Add the filename as a column
+    """
+    tbl.add_column(table.Column(name='Filename', data=[filename]*len(tbl)))
 
 def append_table(merged_table, table_to_add):
     """
