@@ -2,9 +2,9 @@ import numpy as np
 import astropy
 from distutils.version import LooseVersion
 
-if LooseVersion(astropy.__version__) < LooseVersion('1.0.0'):
-    raise Exception("Your version of astropy is out of date.  Please update "
-                    "to at least version >=1.0.")
+#if LooseVersion(astropy.__version__) < LooseVersion('1.0.0'):
+#    raise Exception("Your version of astropy is out of date.  Please update "
+#                    "to at least version >=1.0.")
 if LooseVersion(np.__version__) < LooseVersion('1.6'):
     raise Exception("Your version of numpy is out of date.  Please update "
                     "to at least version >=1.6.")
@@ -54,15 +54,15 @@ ids = table.Column(data=list(jimdale['runid'])+
                     list(stevelongmore['ID'])
                    )
 names = table.Column(data=['JimDale']*len(jimdale) +
-                     ['AndreaGianetti']*len(andreagianetti) + 
-                     ['EricKoch']*len(erickoch) + 
+                     ['AndreaGianetti']*len(andreagianetti) +
+                     ['EricKoch']*len(erickoch) +
                      ['SimonGlover']*len(simonglover) +
                      ['DiederikKruijssen']*len(diederikkruijssen) +
                      ['SteveLongmore']*len(stevelongmore)
                     )
 is_sim = table.Column(data=[True]*len(jimdale) +
-                     [False]*len(andreagianetti) + 
-                     [True]*len(erickoch) + 
+                     [False]*len(andreagianetti) +
+                     [True]*len(erickoch) +
                      [True]*len(simonglover) +
                      [True]*len(diederikkruijssen) +
                      [False]*len(stevelongmore) # I don't believe you.  =) # Ha ha ;)
